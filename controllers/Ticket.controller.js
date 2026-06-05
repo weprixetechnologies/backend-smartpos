@@ -145,7 +145,32 @@ const requestClosure = async (req, res) => {
     }
 };
 
+
+const createBulk = async (req, res) => {
+    try {
+        if (!Array.isArray(req.body.tickets)) {
+            return res.status(400).json({ success: false, message: 'Invalid payload, expected array of tickets in "tickets" field' });
+        }
+        const result = await TicketService.createBulkTickets(req.user, req.body.tickets);
+        res.status(201).json({ success: true, data: result });
+    } catch (error) {
+        res.status(error.status || 500).json({ success: false, message: error.message });
+    }
+};
+
+
+const mapDevice = async (req, res) => {
+    try {
+        const result = await TicketService.mapDevice(req.user, req.params.id, req.body);
+        res.status(200).json({ success: true, data: result });
+    } catch (error) {
+        res.status(error.status || 500).json({ success: false, message: error.message });
+    }
+};
+
 module.exports = {
+    mapDevice,
+    createBulk,
     create,
     assign,
     getOne,

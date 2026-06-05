@@ -31,8 +31,10 @@ const getMachine = async (req, res, next) => {
 };
 
 const listMachines = async (req, res, next) => {
+    console.log('List Machines - Actor:', req.user, 'Query:', req.query);
     try {
         const result = await MachineService.listMachines(req.user, req.query);
+        console.log('List Machines - Result:', result);
         res.status(200).json({ success: true, ...result });
     } catch (err) { next(err); }
 };
@@ -67,8 +69,31 @@ const getCustodyChain = async (req, res, next) => {
 
 const getTidHistory = async (req, res, next) => {
     try {
-        const result = await TidMappingModel.getHistory(req.params.id);
-        res.status(200).json({ success: true, data: result });
+        const historyRows = await TidMappingModel.getHistory(req.params.id);
+        const formattedEvents = [];
+        for (const row of historyRows) {
+            if (row.unmapped_at) {
+                formattedEvents.push({
+                    id: row.id + '_unmap',
+                    action: 'UNMAPPED',
+                    tid: row.tid,
+                    merchant_name: row.merchant_name,
+                    performed_by: row.unmapped_by_name || 'System',
+                    created_at: row.unmapped_at
+                });
+            }
+            formattedEvents.push({
+                id: row.id + '_map',
+                action: 'MAPPED',
+                tid: row.tid,
+                merchant_name: row.merchant_name,
+                performed_by: row.mapped_by_name || 'System',
+                created_at: row.mapped_at
+            });
+        }
+        
+        formattedEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        res.status(200).json({ success: true, data: formattedEvents });
     } catch (err) { next(err); }
 };
 

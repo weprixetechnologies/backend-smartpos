@@ -6,7 +6,7 @@ const verifyToken = require('../middlewares/auth.middleware');
 const requireRole = require('../middlewares/rbac.middleware');
 
 router.post('/create', verifyToken, requireRole('SUPERADMIN', 'MANAGER'), validateRegister, EmployeeController.register);
-router.get('/list', verifyToken, requireRole('SUPERADMIN', 'SUPER_ADMIN', 'MANAGER'), EmployeeController.list);
+router.get('/list', verifyToken, EmployeeController.list);
 router.get('/:id', verifyToken, EmployeeController.getOne);
 router.put('/update/:id', verifyToken, validateEdit, EmployeeController.edit);
 router.patch('/status/:id', verifyToken, requireRole('SUPERADMIN', 'SUPERADMIN', 'MANAGER'), EmployeeController.edit);

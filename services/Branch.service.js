@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const db = require('../utils/db');
 const auditEmitter = require('../utils/auditEmitter');
 
@@ -175,24 +176,29 @@ async function create(payload, actor) {
         throw err;
     }
 
-    const branchCode = payload.branch_code.trim().toUpperCase();
+    const branchCode = payload.branch_code ? payload.branch_code.trim().toUpperCase() : null;
 
     const conn = await db.getConnection();
     await conn.beginTransaction();
 
     try {
-        const [existing] = await conn.query('SELECT id FROM branches WHERE branch_code = ?', [branchCode]);
-        if (existing.length > 0) {
-            const err = new Error('Branch code already exists');
-            err.status = 409;
-            err.field = 'branch_code';
-            throw err;
+        if (branchCode) {
+            const [existing] = await conn.query('SELECT id FROM branches WHERE branch_code = ?', [branchCode]);
+            if (existing.length > 0) {
+                const err = new Error('Branch code already exists');
+                err.status = 409;
+                err.field = 'branch_code';
+                throw err;
+            }
         }
 
+        const branchId = crypto.randomUUID();
+
         await conn.query(`
-            INSERT INTO branches (branch_code, branch_name, address, contact_person, contact_mobile, contact_email, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO branches (id, branch_code, branch_name, address, contact_person, contact_mobile, contact_email, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         `, [
+            branchId,
             branchCode,
             payload.branch_name,
             payload.address,
@@ -201,9 +207,6 @@ async function create(payload, actor) {
             payload.contact_email || null,
             payload.status || 'ACTIVE'
         ]);
-
-        const [newBranchRows] = await conn.query('SELECT id FROM branches WHERE branch_code = ?', [branchCode]);
-        const branchId = newBranchRows[0].id;
 
         if (payload.pincode_ranges.length > 0) {
             const values = payload.pincode_ranges.map(r => [branchId, r.pincode_from, r.pincode_to]);
@@ -300,12 +303,31 @@ async function update(id, payload, actor) {
         const values = [];
         const newValues = {};
 
-        const fields = ['branch_name', 'address', 'contact_person', 'contact_mobile', 'contact_email', 'status'];
+        const fields = ['branch_code', 'branch_name', 'address', 'contact_person', 'contact_mobile', 'contact_email', 'status'];
+
+        if (payload.branch_code) {
+            const bc = payload.branch_code.trim().toUpperCase();
+            const [existing] = await conn.query('SELECT id FROM branches WHERE branch_code = ? AND id != ?', [bc, id]);
+            if (existing.length > 0) {
+                const err = new Error('Branch code already exists');
+                err.status = 409;
+                err.field = 'branch_code';
+                throw err;
+            }
+        }
+
         fields.forEach(f => {
             if (payload[f] !== undefined) {
-                updates.push(`${f} = ?`);
-                values.push(payload[f]);
-                newValues[f] = payload[f];
+                if (f === 'branch_code') {
+                    const bc = payload[f] ? payload[f].trim().toUpperCase() : null;
+                    updates.push(`${f} = ?`);
+                    values.push(bc);
+                    newValues[f] = bc;
+                } else {
+                    updates.push(`${f} = ?`);
+                    values.push(payload[f]);
+                    newValues[f] = payload[f];
+                }
             }
         });
 

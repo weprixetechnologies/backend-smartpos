@@ -34,85 +34,49 @@ async function seed() {
         const branchId = branches[0].id;
 
         // 2. Get some engineers and a manager/operator
-        const [engineers] = await db.query('SELECT id, full_name, role FROM employees WHERE role = "ENGINEER" LIMIT 3');
+        const [engineers] = await db.query('SELECT id, full_name, role FROM employees WHERE role = "ENGINEER" LIMIT 5');
         const [creators] = await db.query('SELECT id, full_name, role FROM employees WHERE role IN ("MANAGER", "SUPERADMIN", "OPERATOR") LIMIT 1');
 
         const creatorId = creators.length > 0 ? creators[0].id : null;
         let creatorRole = creators.length > 0 ? creators[0].role : null;
         if (creatorRole === 'SUPERADMIN') creatorRole = 'SUPERADMIN';
 
-        const dummyData = [
-            {
-                merchant_name: 'Cafe Coffee Day',
-                merchant_mobile: '9876543210',
-                merchant_address: '123 MG Road, Bangalore',
-                merchant_pincode: '560001',
-                machine_serial_number: 'SN-1200304',
-                machine_model: 'Verifone VX520',
-                service_type: 'INSTALLATION',
-                priority: 'NORMAL',
-                status: 'NEW',
-                complaint_description: 'New installation required for CCD MG Road outlet.',
-                sla_hours: 48
-            },
-            {
-                merchant_name: 'Star Supermarket',
-                merchant_mobile: '9876543211',
-                merchant_address: '45 Koramangala, Bangalore',
-                merchant_pincode: '560034',
-                machine_serial_number: 'SN-9988221',
-                machine_model: 'Ingenico Move 2500',
-                service_type: 'REPAIR',
-                priority: 'CRITICAL',
-                status: 'ASSIGNED',
-                complaint_description: 'Machine is not turning on. Completely dead. Urgent repair needed.',
-                sla_hours: 4,
-                engineer: engineers.length > 0 ? engineers[0] : null
-            },
-            {
-                merchant_name: 'Fashion Hub',
-                merchant_mobile: '9876543212',
-                merchant_address: 'Commercial Street, Bangalore',
-                merchant_pincode: '560001',
-                machine_serial_number: 'SN-334455',
-                machine_model: 'Pax A920',
-                service_type: 'MISC_SERV',
-                priority: 'NORMAL',
-                status: 'IN_PROGRESS',
-                complaint_description: 'Routine maintenance and paper roll delivery.',
-                sla_hours: 72,
-                engineer: engineers.length > 1 ? engineers[1] : (engineers[0] || null)
-            },
-            {
-                merchant_name: 'Tech Haven',
-                merchant_mobile: '9876543213',
-                merchant_address: 'Indiranagar, Bangalore',
-                merchant_pincode: '560038',
-                machine_serial_number: 'SN-112233',
-                machine_model: 'Verifone VX520',
-                service_type: 'PICKUP',
-                priority: 'NORMAL',
-                status: 'PENDING_CLOSE',
-                complaint_description: 'Merchant closed business, retrieving the POS terminal.',
-                sla_hours: 48,
-                engineer: engineers.length > 0 ? engineers[0] : null
-            },
-            {
-                merchant_name: 'Bakers Point',
-                merchant_mobile: '9876543214',
-                merchant_address: 'Jayanagar, Bangalore',
-                merchant_pincode: '560041',
-                machine_serial_number: 'SN-667788',
-                machine_model: 'Ingenico Move 2500',
-                service_type: 'REPAIR',
-                priority: 'URGENT',
-                status: 'CLOSED',
-                complaint_description: 'Network connection issue, SIM card replacement required.',
-                sla_hours: 24,
-                engineer: engineers.length > 1 ? engineers[1] : (engineers[0] || null)
-            }
-        ];
+        const merchantNames = ['Cafe Coffee Day', 'Star Supermarket', 'Fashion Hub', 'Tech Haven', 'Bakers Point', 'Fresh Mart', 'Auto Parts Hub', 'Pizza Palace', 'City Bookstore', 'Daily Needs Groceries', 'Fitness First Gym', 'Green Pharmacy'];
+        const machineModels = ['Verifone VX520', 'Ingenico Move 2500', 'Pax A920', 'Verifone e355', 'Ingenico iWL250', 'Pax S920'];
+        const serviceTypes = ['INSTALLATION', 'REPAIR', 'REPLACEMENT', 'DE_INSTALLATION', 'PREVENTIVE_MAINTENANCE', 'PAPER_ROLL_DELIVERY', 'TRAINING', 'MISC_SERV', 'PICKUP'];
+        const priorities = ['URGENT', 'CRITICAL', 'NORMAL'];
+        const statuses = ['NEW', 'ASSIGNED', 'EN_ROUTE', 'ARRIVED_PENDING', 'IN_PROGRESS', 'PENDING_CLOSE', 'CLOSED', 'CANCELLED'];
 
+        const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+        const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+        
+        const dummyData = [];
+        
+        // Generate 35 dynamic tickets
+        for (let i = 0; i < 35; i++) {
+            const status = getRandomElement(statuses);
+            let engineer = null;
+            if (status !== 'NEW' && status !== 'CANCELLED') {
+                engineer = engineers.length > 0 ? getRandomElement(engineers) : null;
+            }
+
+            dummyData.push({
+                merchant_name: getRandomElement(merchantNames) + ' ' + getRandomInt(1, 100),
+                merchant_mobile: '98' + getRandomInt(10000000, 99999999).toString(),
+                merchant_address: `${getRandomInt(1, 999)} Random Street, City Area`,
+                merchant_pincode: '5600' + getRandomInt(10, 99).toString(),
+                machine_serial_number: 'SN-' + getRandomInt(100000, 999999).toString(),
+                machine_model: getRandomElement(machineModels),
+                service_type: getRandomElement(serviceTypes),
+                priority: getRandomElement(priorities),
+                status: status,
+                complaint_description: `Automatically generated complaint for ${status} status.`,
+                sla_hours: getRandomElement([4, 24, 48, 72]),
+                engineer: engineer
+            });
+        }
+
+        // We will process them sequentially to correctly increment the ticket_number
         for (const data of dummyData) {
             const ticketId = crypto.randomUUID();
             const ticketNumber = await generateTicketNumber();
@@ -146,7 +110,7 @@ async function seed() {
             );
 
             // If it has progressed past NEW, insert more history to make it look realistic
-            if (data.status !== 'NEW' && data.engineer) {
+            if (data.status !== 'NEW' && data.status !== 'CANCELLED' && data.engineer) {
                 await db.query(
                     `INSERT INTO ticket_status_history (id, ticket_id, from_status, to_status, changed_by, changed_by_role, notes, occurred_at)
                      VALUES (UUID(), ?, 'NEW', 'ASSIGNED', ?, ?, ?, DATE_ADD(NOW(), INTERVAL 10 MINUTE))`,
@@ -154,17 +118,23 @@ async function seed() {
                 );
             }
 
-            if (data.status === 'IN_PROGRESS' || data.status === 'PENDING_CLOSE' || data.status === 'CLOSED') {
+            if (['EN_ROUTE', 'ARRIVED_PENDING', 'IN_PROGRESS', 'PENDING_CLOSE', 'CLOSED'].includes(data.status)) {
                 await db.query(
                     `INSERT INTO ticket_status_history (id, ticket_id, from_status, to_status, changed_by, changed_by_role, notes, occurred_at)
                      VALUES (UUID(), ?, 'ASSIGNED', 'EN_ROUTE', ?, 'ENGINEER', 'Engineer marked en-route', DATE_ADD(NOW(), INTERVAL 20 MINUTE))`,
                     [ticketId, assignedEngineerId]
                 );
+            }
+            
+            if (['ARRIVED_PENDING', 'IN_PROGRESS', 'PENDING_CLOSE', 'CLOSED'].includes(data.status)) {
                 await db.query(
                     `INSERT INTO ticket_status_history (id, ticket_id, from_status, to_status, changed_by, changed_by_role, notes, occurred_at)
                      VALUES (UUID(), ?, 'EN_ROUTE', 'ARRIVED_PENDING', ?, 'ENGINEER', 'Engineer arrived at location', DATE_ADD(NOW(), INTERVAL 45 MINUTE))`,
                     [ticketId, assignedEngineerId]
                 );
+            }
+
+            if (['IN_PROGRESS', 'PENDING_CLOSE', 'CLOSED'].includes(data.status)) {
                 await db.query(
                     `INSERT INTO ticket_status_history (id, ticket_id, from_status, to_status, changed_by, changed_by_role, notes, occurred_at)
                      VALUES (UUID(), ?, 'ARRIVED_PENDING', 'IN_PROGRESS', ?, 'ENGINEER', 'OTP validated, work started', DATE_ADD(NOW(), INTERVAL 50 MINUTE))`,
@@ -172,7 +142,7 @@ async function seed() {
                 );
             }
 
-            if (data.status === 'PENDING_CLOSE' || data.status === 'CLOSED') {
+            if (['PENDING_CLOSE', 'CLOSED'].includes(data.status)) {
                 // Add job sheet
                 await db.query(
                     `INSERT INTO job_sheets (id, ticket_id, engineer_id, work_done, time_on_site_minutes, merchant_signoff_name, created_at)
@@ -194,11 +164,19 @@ async function seed() {
                     [ticketId, creatorId, creatorRole]
                 );
             }
+            
+            if (data.status === 'CANCELLED') {
+                await db.query(
+                    `INSERT INTO ticket_status_history (id, ticket_id, from_status, to_status, changed_by, changed_by_role, notes, occurred_at)
+                     VALUES (UUID(), ?, 'NEW', 'CANCELLED', ?, ?, 'Ticket cancelled', DATE_ADD(NOW(), INTERVAL 30 MINUTE))`,
+                    [ticketId, creatorId, creatorRole]
+                );
+            }
 
             console.log(`Created ticket: ${ticketNumber} (${data.status})`);
         }
 
-        console.log('Seeding completed successfully!');
+        console.log(`Seeding completed successfully! ${dummyData.length} tickets created.`);
     } catch (error) {
         console.error('Error seeding tickets:', error);
     } finally {

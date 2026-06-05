@@ -61,11 +61,6 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        // Remove branch_code if maliciously provided
-        if (req.body.branch_code) {
-            delete req.body.branch_code;
-        }
-
         const branchId = await BranchService.update(req.params.id, req.body, req.user);
         const branch = await BranchService.getById(branchId);
         res.json({ success: true, ...branch });

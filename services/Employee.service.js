@@ -274,7 +274,7 @@ async function getEmployee(actorUser, targetId) {
 
 async function listEmployees(actorUser, query) {
     // Permission check
-    if (actorUser.role === 'ENGINEER' || actorUser.role === 'OPERATOR') {
+    if (actorUser.role === 'ENGINEER') {
         throw createError(403, 'Forbidden: You do not have permission to list employees');
     }
 
@@ -285,7 +285,7 @@ async function listEmployees(actorUser, query) {
         page: query.page || undefined,
         limit: query.limit || undefined
     };
-
+    // console.log('List Employees - Actor:', actorUser, 'Query:', query);
     if (actorUser.role === 'MANAGER') {
         filters.branch_id = actorUser.branch_id;
         if (query.role) {
@@ -302,7 +302,7 @@ async function listEmployees(actorUser, query) {
 
     const result = await EmployeeModel.findAll(filters);
     const safeEmployees = result.employees.map(emp => safeEmployee(emp));
-
+    // console.log('List Employees - Result:', result);
     return {
         employees: safeEmployees,
         total: result.total,

@@ -27,15 +27,6 @@ const addMachine = async (actorUser, payload) => {
 
     const machine = await MachineModel.create({ ...payload, branch_id });
 
-    if (payload.tid) {
-        await TidMappingModel.mapTid({
-            machine_id: machine.id,
-            tid: payload.tid,
-            mapped_by: actorUser.id,
-            ticket_id: null
-        });
-    }
-
     auditEmitter.emit('audit', buildEntry({ user: actorUser }, {
         module: 'MACHINE',
         action_code: 'MACHINE_ADDED',
@@ -130,12 +121,10 @@ const getMachine = async (actorUser, machineId) => {
 };
 
 const listMachines = async (actorUser, query) => {
-    if (actorUser.role === 'ENGINEER') throw { status: 403, message: 'Permission denied' };
-
     const filters = { ...query };
-    if (['OPERATOR', 'MANAGER'].includes(actorUser.role)) {
-        filters.branch_id = actorUser.branch_id;
-    }
+
+    filters.branch_id = actorUser.branch_id;
+
 
     return await MachineModel.findAll(filters);
 };
@@ -167,13 +156,13 @@ const mapTid = async (actorUser, machineId, payload) => {
     }
 
     await MachineModel.update(machineId, { tid: payload.tid, status: 'DEPLOYED' });
-    
+
     // Assign to merchant
     await MerchantMachineAssignmentModel.unassign(machineId, { unassigned_by: actorUser.id });
     await MerchantMachineAssignmentModel.create({
-        merchant_id: payload.merchant_id, 
-        machine_id: machineId, 
-        assigned_by: actorUser.id, 
+        merchant_id: payload.merchant_id,
+        machine_id: machineId,
+        assigned_by: actorUser.id,
         notes: 'Mapped via TID'
     });
 
@@ -212,7 +201,7 @@ const unmapTid = async (actorUser, machineId, payload = {}) => {
         await TidMappingModel.unmapTid(machineId, { unmapped_by: actorUser.id, ticket_id: payload.ticket_id });
     }
     await MachineModel.update(machineId, { tid: null, status: 'AVAILABLE' });
-    
+
     // Unassign from merchant
     await MerchantMachineAssignmentModel.unassign(machineId, { unassigned_by: actorUser.id });
 

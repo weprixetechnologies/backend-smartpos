@@ -20,7 +20,16 @@ const getCurrentMapping = async (machine_id) => {
 };
 
 const getHistory = async (machine_id) => {
-    const [rows] = await db.query('SELECT * FROM tid_mapping_history WHERE machine_id = ? ORDER BY mapped_at DESC', [machine_id]);
+    const [rows] = await db.query(`
+        SELECT t.*, 
+               e1.full_name as mapped_by_name, 
+               e2.full_name as unmapped_by_name 
+        FROM tid_mapping_history t
+        LEFT JOIN employees e1 ON t.mapped_by = e1.id
+        LEFT JOIN employees e2 ON t.unmapped_by = e2.id
+        WHERE t.machine_id = ? 
+        ORDER BY t.mapped_at DESC
+    `, [machine_id]);
     return rows;
 };
 

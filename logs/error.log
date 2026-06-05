@@ -58,3 +58,98 @@ Stack: Error: Cannot add or update a child row: a foreign key constraint fails (
     at Object.editMachine (/Users/darksoul/Desktop/POSMerchant/backend/services/Machine.service.js:66:24)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     at async editMachine (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Machine.controller.js:14:24)
+[2026-06-05T14:59:51.704Z] [ERROR] Express Error: Already punched in today
+Stack: Error: Already punched in today
+    at Object.punchIn (/Users/darksoul/Desktop/POSMerchant/backend/services/Attendance.service.js:18:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async punchIn (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Attendance.controller.js:6:28)
+[2026-06-05T15:29:07.688Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/rbac.middleware.js:13:9
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+[2026-06-05T15:30:33.423Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+[2026-06-05T15:31:42.029Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+[2026-06-05T15:31:52.477Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+[2026-06-05T15:32:58.112Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+[2026-06-05T15:33:15.109Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+[2026-06-05T15:39:38.433Z] [ERROR] Express Error: Permission denied
+Meta: {"status":403,"message":"Permission denied"}
+[2026-06-05T15:39:38.635Z] [ERROR] Express Error: Permission denied
+Meta: {"status":403,"message":"Permission denied"}
+[2026-06-05T15:39:45.229Z] [ERROR] Express Error: Permission denied
+Meta: {"status":403,"message":"Permission denied"}
+[2026-06-05T16:06:48.237Z] [ERROR] Express Error: Unknown column 'e1.name' in 'field list'
+Stack: Error: Unknown column 'e1.name' in 'field list'
+    at Object.getHistory (/Users/darksoul/Desktop/POSMerchant/backend/models/TidMapping.model.js:23:29)
+    at getTidHistory (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Machine.controller.js:72:51)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)

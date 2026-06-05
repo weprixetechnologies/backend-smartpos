@@ -15,10 +15,12 @@ const {
 } = require('../validators/ticket.validator');
 const validateRequest = require('../middlewares/validateRequest');
 
+router.post('/bulk', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN'), TicketController.createBulk);
 router.post('/', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN'), validateCreateTicket, validateRequest, TicketController.create);
 router.get('/', verifyToken, TicketController.list);
 router.get('/:id', verifyToken, TicketController.getOne);
 
+router.post('/:id/map-device', verifyToken, requireRole('ENGINEER', 'OPERATOR', 'MANAGER', 'SUPERADMIN'), TicketController.mapDevice);
 router.post('/:id/assign', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN'), validateAssignEngineer, validateRequest, TicketController.assign);
 router.post('/:id/cancel', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN'), validateCancelTicket, validateRequest, TicketController.cancel);
 

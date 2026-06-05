@@ -7,6 +7,7 @@ const TicketAttachmentModel = require('../models/TicketAttachment.model');
 const TicketMessageModel = require('../models/TicketMessage.model');
 const JobSheetModel = require('../models/JobSheet.model');
 const EmployeeModel = require('../models/Employee.model');
+const MerchantModel = require('../models/Merchant.model');
 const auditEmitter = require('../utils/auditEmitter');
 
 const createTicket = async (actorUser, payload) => {
@@ -23,12 +24,31 @@ const createTicket = async (actorUser, payload) => {
             throw { status: 409, message: 'Machine not available for service' };
         }
         
-        payload.tid = machine.tid;
+        // Use machine's tid only if not provided in payload
+        if (!payload.tid) {
+            payload.tid = machine.tid;
+        }
         payload.serial_number = machine.serial_number;
         payload.machine_model = machine.model;
 
         if (machine.status !== 'DEPLOYED') {
             await MachineModel.updateStatus(machine.id, 'DEPLOYED');
+        }
+    }
+
+    if (payload.merchant_mobile) {
+        const existingMerchant = await MerchantModel.findByMobile(payload.merchant_mobile);
+        if (!existingMerchant) {
+            await MerchantModel.create({
+                full_name: payload.merchant_name,
+                business_name: payload.business_name,
+                mobile: payload.merchant_mobile,
+                pincode: payload.merchant_pincode,
+                address: payload.merchant_address,
+                branch_id: payload.branch_id,
+                email: payload.merchant_email,
+                registered_by: actorUser.id
+            });
         }
     }
 
@@ -574,7 +594,199 @@ const requestClosure = async (actorUser, ticketId) => {
     return updatedTicket;
 };
 
+
+const createBulkTickets = async (actorUser, ticketsArray) => {
+    const results = {
+        total: ticketsArray.length,
+        successCount: 0,
+        errorCount: 0,
+        errors: []
+    };
+
+    // We process sequentially to avoid DB locks or race conditions with merchant creation
+    for (let i = 0; i < ticketsArray.length; i++) {
+        const payload = ticketsArray[i];
+        try {
+            // Assign branch to the operator's branch implicitly
+            if (['OPERATOR', 'MANAGER'].includes(actorUser.role)) {
+                payload.branch_id = actorUser.branch_id;
+            } else if (actorUser.role === 'SUPERADMIN' && !payload.branch_id) {
+                throw { status: 400, message: 'branch_id is required for SUPERADMIN' };
+            }
+
+            // Parse service type from call_type if present
+            if (payload.call_type) {
+                const ct = payload.call_type.toLowerCase().trim();
+                if (ct === 'de-installation' || ct === 'deinstallation') {
+                    payload.service_type = 'DEINSTALLATION';
+                } else if (ct === 'installation') {
+                    payload.service_type = 'INSTALLATION';
+                } else if (ct === 'replacement') {
+                    payload.service_type = 'REPLACEMENT';
+                } else {
+                    payload.service_type = 'MISC_SERV';
+                }
+            }
+
+            // Fallback for service type if invalid or empty
+            const validServiceTypes = ['REPAIR','PICKUP','REPLACEMENT','INSTALLATION','DEINSTALLATION','MISC_SERV'];
+            if (!payload.service_type || !validServiceTypes.includes(payload.service_type)) {
+                payload.service_type = 'MISC_SERV';
+            }
+
+            // Handle machine logic if TID is provided and machine exists
+            if (payload.tid && !payload.machine_id) {
+                const machine = await MachineModel.findByTid(payload.tid);
+                if (machine) {
+                    payload.machine_id = machine.id;
+                    payload.serial_number = machine.serial_number;
+                    payload.machine_model = machine.model;
+                    if (machine.status !== 'DEPLOYED') {
+                        await MachineModel.updateStatus(machine.id, 'DEPLOYED');
+                    }
+                }
+            }
+
+            // Merchant creation logic
+            if (payload.merchant_mobile) {
+                let existingMerchant = await MerchantModel.findByMobile(payload.merchant_mobile);
+                if (!existingMerchant) {
+                    const merchantId = await MerchantModel.create({
+                        full_name: payload.merchant_name || payload.contact_name || 'Unknown',
+                        business_name: payload.business_name || null,
+                        mobile: payload.merchant_mobile,
+                        pincode: payload.merchant_pincode || '000000',
+                        address: payload.merchant_address || payload.location || 'Unknown',
+                        branch_id: payload.branch_id,
+                        email: payload.merchant_email || null,
+                        mcc_code: payload.mcc_code || null,
+                        zone_name: payload.zone_name || null,
+                        sponsor_bank: payload.sponsor_bank || payload.bank || null,
+                        mid: payload.mid || null,
+                        registered_by: actorUser.id
+                    });
+                } else {
+                    // Merchant exists, we can optionally update details, but user said "otherwise its ok"
+                }
+            } else {
+                throw new Error("Merchant Mobile is required");
+            }
+
+            // Make sure required fields for ticket are present, set defaults if necessary
+            payload.priority = payload.priority || 'NORMAL';
+            payload.source = payload.source || 'OPERATOR_RAISED';
+
+            // MySQL datetime fix for request_date
+            if (payload.request_date) {
+                try {
+                    const d = new Date(payload.request_date);
+                    if (!isNaN(d.getTime())) {
+                        payload.request_date = d.toISOString().slice(0, 19).replace('T', ' ');
+                    } else {
+                        payload.request_date = null;
+                    }
+                } catch(e) {
+                    payload.request_date = null;
+                }
+            }
+
+            const ticket = await TicketModel.create(payload);
+
+            await TicketStatusHistoryModel.create({
+                ticket_id: ticket.id,
+                from_status: null,
+                to_status: 'NEW',
+                changed_by: actorUser.id,
+                changed_by_role: actorUser.role
+            });
+
+            auditEmitter.emit('audit', {
+                module: 'TICKET',
+                action_code: 'TICKET_CREATED_BULK',
+                entity_type: 'tickets',
+                entity_id: ticket.id,
+                actor_id: actorUser.id,
+                new_state: ticket
+            });
+
+            results.successCount++;
+        } catch (err) {
+            results.errorCount++;
+            results.errors.push({
+                row: i + 1,
+                ticket_no: payload.call_ticket_no || 'Unknown',
+                message: err.message || 'Failed to process ticket'
+            });
+        }
+    }
+
+    return results;
+};
+
+
+const mapDevice = async (actorUser, ticketId, payload) => {
+    const ticket = await TicketModel.findById(ticketId);
+    if (!ticket) throw { status: 404, message: 'Ticket not found' };
+
+    // Find machine by serial number
+    const machine = await MachineModel.findBySerial(payload.serial_number);
+    if (!machine) throw { status: 404, message: 'Machine not found' };
+
+    // Assuming we can only map available machines
+    if (machine.status !== 'AVAILABLE') {
+        throw { status: 409, message: 'Machine is not available in stock' };
+    }
+
+    // Update machine
+    const db = require('../utils/db');
+    await db.query(
+        'UPDATE machines SET status = ?, tid = ?, associated_ticket_id = ? WHERE id = ?',
+        ['DEPLOYED', payload.tid || ticket.tid || null, ticketId, machine.id]
+    );
+
+    const mappedTid = payload.tid || ticket.tid;
+    if (mappedTid) {
+        const TidMappingModel = require('../models/TidMapping.model');
+        await TidMappingModel.mapTid({
+            machine_id: machine.id,
+            tid: mappedTid,
+            merchant_name: ticket.merchant_name,
+            merchant_address: ticket.merchant_address,
+            mapped_by: actorUser.id,
+            ticket_id: ticketId
+        });
+    }
+
+    // Update ticket
+    await db.query(
+        'UPDATE tickets SET machine_id = ?, tid = ?, mid = ?, serial_number = ?, machine_model = ? WHERE id = ?',
+        [machine.id, payload.tid || null, payload.mid || null, machine.serial_number, machine.model, ticketId]
+    );
+
+    // Add audit or status history
+    await TicketMessageModel.create({
+        ticket_id: ticketId,
+        sender_id: actorUser.id,
+        sender_role: actorUser.role,
+        message: 'Mapped Device: ' + machine.serial_number,
+        is_internal: true
+    });
+
+    auditEmitter.emit('audit', {
+        module: 'TICKET',
+        action_code: 'TICKET_DEVICE_MAPPED',
+        entity_type: 'tickets',
+        entity_id: ticketId,
+        actor_id: actorUser.id,
+        new_state: { machine_id: machine.id, tid: payload.tid, mid: payload.mid }
+    });
+
+    return await TicketModel.findById(ticketId);
+};
+
 module.exports = {
+    mapDevice,
+    createBulkTickets,
     createTicket,
     assignEngineer,
     getTicket,

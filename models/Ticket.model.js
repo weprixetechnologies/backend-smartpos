@@ -5,8 +5,11 @@ const create = async (payload) => {
     const fields = [
         'service_type', 'branch_id', 'priority', 'source',
         'merchant_name', 'business_name', 'merchant_address', 'merchant_pincode',
-        'merchant_mobile', 'merchant_email', 'machine_id', 'tid',
-        'serial_number', 'machine_model', 'complaint_category', 'complaint_description'
+        'merchant_mobile', 'merchant_email', 'mcc_code', 'zone_name', 'sponsor_bank', 'mid',
+        'machine_id', 'tid', 'serial_number', 'machine_model', 'complaint_category', 'complaint_description',
+        'fsp_center', 'fsp_region', 'fsp_subregion', 'call_type', 'call_ticket_no', 'request_date',
+        'bank', 'location', 'city', 'state_code', 'ticket_branch_code', 'ticket_branch_name',
+        'branch_manager', 'branch_manager_mobile', 'contact_name', 'telephone_no'
     ];
 
     const values = [];
@@ -155,7 +158,8 @@ const update = async (id, fields) => {
         'arrival_otp_fallback_used', 'arrival_fallback_operator',
         'merchant_signoff_otp_verified', 'merchant_signoff_at',
         'transit_id', 'feedback_rating', 'feedback_comment', 'feedback_received_at',
-        'machine_id', 'tid', 'serial_number', 'machine_model'
+        'machine_id', 'tid', 'serial_number', 'machine_model',
+        'mcc_code', 'zone_name', 'sponsor_bank', 'mid'
     ];
 
     const setClauses = [];

@@ -53,6 +53,7 @@ CREATE SEQUENCE IF NOT EXISTS seq_ticket      START WITH 1 INCREMENT BY 1 NOCACH
 CREATE SEQUENCE IF NOT EXISTS seq_transit     START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE IF NOT EXISTS seq_employee    START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE IF NOT EXISTS seq_consignment START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE IF NOT EXISTS seq_merchant    START WITH 1 INCREMENT BY 1 NOCACHE;
 
 -- ============================================================
 -- MODULE: BRANCHES
@@ -60,7 +61,7 @@ CREATE SEQUENCE IF NOT EXISTS seq_consignment START WITH 1 INCREMENT BY 1 NOCACH
 
 CREATE TABLE branches (
     id              CHAR(36)     NOT NULL,
-    branch_code     VARCHAR(20)  NOT NULL,
+    branch_code     VARCHAR(20)  DEFAULT NULL,
     branch_name     VARCHAR(150) NOT NULL,
     address         TEXT         NOT NULL,
     contact_person  VARCHAR(100) DEFAULT NULL,
@@ -257,7 +258,8 @@ CREATE TABLE login_audit (
     success         TINYINT(1)   NOT NULL,
     ip_address      VARCHAR(45)  DEFAULT NULL,
     device_info     TEXT         DEFAULT NULL,
-    branch_id       CHAR(36)     DEFAULT NULL,
+    branch_id         CHAR(36)     DEFAULT NULL,
+    associated_ticket_id CHAR(36)  DEFAULT NULL,
     created_at      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     KEY idx_la_employee (employee_id),
@@ -495,7 +497,8 @@ CREATE TABLE machines (
     KEY idx_machines_status  (status),
     KEY idx_machines_branch  (branch_id),
     KEY idx_machines_chronic (is_chronic_fault),
-    CONSTRAINT fk_machines_branch FOREIGN KEY (branch_id) REFERENCES branches(id) ON DELETE SET NULL
+    CONSTRAINT fk_machines_branch FOREIGN KEY (branch_id) REFERENCES branches(id) ON DELETE SET NULL,
+    CONSTRAINT fk_machines_ticket FOREIGN KEY (associated_ticket_id) REFERENCES tickets(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DELIMITER $$
@@ -596,6 +599,10 @@ CREATE TABLE tickets (
     merchant_pincode              VARCHAR(10)  NOT NULL,
     merchant_mobile               VARCHAR(20)  NOT NULL,
     merchant_email                VARCHAR(150) DEFAULT NULL,
+    mcc_code                      VARCHAR(50)  DEFAULT NULL,
+    zone_name                     VARCHAR(100) DEFAULT NULL,
+    sponsor_bank                  VARCHAR(100) DEFAULT NULL,
+    mid                           VARCHAR(50)  DEFAULT NULL,
     -- Machine
     machine_id                    CHAR(36)     DEFAULT NULL,
     tid                           VARCHAR(50)  DEFAULT NULL,
@@ -1421,7 +1428,7 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
-CREATE SEQUENCE IF NOT EXISTS seq_merchant START WITH 1 INCREMENT BY 1 NOCACHE;
+
 CREATE TABLE merchant_machine_assignments (
     id            CHAR(36)  NOT NULL,
     merchant_id   CHAR(36)  NOT NULL,
