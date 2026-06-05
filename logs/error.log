@@ -1,0 +1,60 @@
+[2026-06-04T18:08:35.729Z] [ERROR] Express Error: Forbidden: You do not have permission to list employees
+Stack: Error: Forbidden: You do not have permission to list employees
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:8:17)
+    at Object.listEmployees (/Users/darksoul/Desktop/POSMerchant/backend/services/Employee.service.js:278:15)
+    at list (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Employee.controller.js:42:46)
+    at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:38:9
+    at /Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
+[2026-06-04T18:08:51.096Z] [ERROR] Express Error: Cannot read properties of undefined (reading 'role')
+[2026-06-04T18:11:32.021Z] [ERROR] Express Error: Invalid or expired refresh token
+Stack: Error: Invalid or expired refresh token
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:10:17)
+    at Object.refreshToken (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:191:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async refreshToken (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Auth.controller.js:227:24)
+[2026-06-04T19:24:53.979Z] [ERROR] Express Error: Invalid credentials
+Stack: Error: Invalid credentials
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:10:17)
+    at Object.login (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:99:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async login (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Auth.controller.js:69:24)
+[2026-06-04T19:31:38.532Z] [ERROR] Express Error: request aborted
+Stack: BadRequestError: request aborted
+    at IncomingMessage.onAborted (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/raw-body/index.js:245:10)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage._destroy (node:_http_incoming:221:10)
+    at _destroy (node:internal/streams/destroy:122:10)
+    at IncomingMessage.destroy (node:internal/streams/destroy:84:5)
+    at abortIncoming (node:_http_server:811:9)
+    at socketOnClose (node:_http_server:805:3)
+    at Socket.emit (node:events:530:35)
+    at TCP.<anonymous> (node:net:346:12)
+[2026-06-04T21:57:20.458Z] [ERROR] Express Error: branch_id is required for SUPER_ADMIN
+Meta: {"status":400,"message":"branch_id is required for SUPER_ADMIN"}
+[2026-06-04T22:00:09.683Z] [ERROR] Express Error: Cannot read properties of undefined (reading 'ticket_id')
+[2026-06-05T06:06:09.161Z] [ERROR] Express Error: Cannot read properties of undefined (reading 'ticket_id')
+[2026-06-05T06:08:33.980Z] [ERROR] Express Error: MerchantMachineAssignmentModel.assign is not a function
+[2026-06-05T06:08:55.688Z] [ERROR] Express Error: No active TID mapping found
+Meta: {"status":404,"message":"No active TID mapping found"}
+[2026-06-05T06:11:23.899Z] [ERROR] Express Error: No active TID mapping found
+Meta: {"status":404,"message":"No active TID mapping found"}
+[2026-06-05T06:11:53.655Z] [ERROR] Express Error: No active TID mapping found
+Meta: {"status":404,"message":"No active TID mapping found"}
+[2026-06-05T06:14:05.358Z] [ERROR] Express Error: Cannot read properties of undefined (reading 'reason')
+[2026-06-05T06:59:49.378Z] [ERROR] Express Error: Cannot add or update a child row: a foreign key constraint fails (`pos_platform`.`machines`, CONSTRAINT `fk_machines_branch` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`) ON DELETE SET NULL)
+Stack: Error: Cannot add or update a child row: a foreign key constraint fails (`pos_platform`.`machines`, CONSTRAINT `fk_machines_branch` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`) ON DELETE SET NULL)
+    at Object.update (/Users/darksoul/Desktop/POSMerchant/backend/models/Machine.model.js:62:14)
+    at Object.editMachine (/Users/darksoul/Desktop/POSMerchant/backend/services/Machine.service.js:66:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async editMachine (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Machine.controller.js:14:24)
+[2026-06-05T07:00:26.605Z] [ERROR] Express Error: Cannot add or update a child row: a foreign key constraint fails (`pos_platform`.`machines`, CONSTRAINT `fk_machines_branch` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`) ON DELETE SET NULL)
+Stack: Error: Cannot add or update a child row: a foreign key constraint fails (`pos_platform`.`machines`, CONSTRAINT `fk_machines_branch` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`id`) ON DELETE SET NULL)
+    at Object.update (/Users/darksoul/Desktop/POSMerchant/backend/models/Machine.model.js:62:14)
+    at Object.editMachine (/Users/darksoul/Desktop/POSMerchant/backend/services/Machine.service.js:66:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async editMachine (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Machine.controller.js:14:24)
