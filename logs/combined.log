@@ -3705,3 +3705,17 @@ Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::ffff:192.16
 Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::ffff:192.168.29.186"}
 [2026-06-05T07:35:33.353Z] [INFO] Incoming Request
 Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::ffff:192.168.29.186"}
+[2026-06-05T07:38:05.796Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-05T07:41:48.427Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-05&to_date=2026-06-05","ip":"::1"}
+[2026-06-05T07:41:48.457Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-05T07:41:48.461Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-01&to_date=2026-06-29","ip":"::1"}
+[2026-06-05T07:41:48.552Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-05T07:41:49.011Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-05&to_date=2026-06-05","ip":"::1"}
+[2026-06-05T07:41:49.016Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-01&to_date=2026-06-29","ip":"::1"}
