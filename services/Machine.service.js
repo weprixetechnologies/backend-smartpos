@@ -38,6 +38,59 @@ const addMachine = async (actorUser, payload) => {
     return machine;
 };
 
+const addMachinesBulk = async (actorUser, { machines, branch_id: payload_branch_id }) => {
+    let target_branch_id = payload_branch_id;
+    if (['OPERATOR', 'MANAGER'].includes(actorUser.role)) {
+        target_branch_id = actorUser.branch_id;
+    } else if (actorUser.role === 'SUPERADMIN' || actorUser.role === 'SUPER_ADMIN') {
+        if (!target_branch_id) throw { status: 400, message: 'branch_id is required for SUPER_ADMIN' };
+    } else {
+        throw { status: 403, message: 'Permission denied' };
+    }
+
+    if (!Array.isArray(machines) || machines.length === 0) {
+        throw { status: 400, message: 'machines array is required and must not be empty' };
+    }
+
+    let successCount = 0;
+    let errorCount = 0;
+    const errors = [];
+
+    for (let i = 0; i < machines.length; i++) {
+        const payload = machines[i];
+        try {
+            if (!payload.serial_number) {
+                throw new Error('serial_number is required');
+            }
+
+            const [[{ count: serialCount }]] = await db.query('SELECT COUNT(*) AS count FROM machines WHERE serial_number = ?', [payload.serial_number]);
+            if (serialCount > 0) throw new Error('Serial number already registered');
+
+            if (payload.tid) {
+                const [[{ count: tidCount }]] = await db.query('SELECT COUNT(*) AS count FROM machines WHERE tid = ?', [payload.tid]);
+                if (tidCount > 0) throw new Error('TID already registered to another machine');
+            }
+
+            const machine = await MachineModel.create({ ...payload, branch_id: target_branch_id });
+
+            auditEmitter.emit('audit', buildEntry({ user: actorUser }, {
+                module: 'MACHINE',
+                action_code: 'MACHINE_ADDED_BULK',
+                entity_type: 'machines',
+                entity_id: machine.id,
+                new_state: machine
+            }));
+
+            successCount++;
+        } catch (err) {
+            errorCount++;
+            errors.push({ row: i + 2, serial_number: payload.serial_number || 'UNKNOWN', message: err.message || 'Validation failed' });
+        }
+    }
+
+    return { successCount, errorCount, errors };
+};
+
 const editMachine = async (actorUser, machineId, payload) => {
     const machine = await MachineModel.findById(machineId);
     if (!machine) throw { status: 404, message: 'Machine not found' };
@@ -292,6 +345,6 @@ const getStats = async (actorUser) => {
 };
 
 module.exports = {
-    addMachine, editMachine, decommissionMachine, getMachine, listMachines,
+    addMachine, addMachinesBulk, editMachine, decommissionMachine, getMachine, listMachines,
     mapTid, unmapTid, transferBranch, getStats
 };

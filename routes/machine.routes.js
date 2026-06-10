@@ -6,6 +6,7 @@ const requireRole = require('../middlewares/rbac.middleware');
 const Validator = require('../validators/machine.validator');
 
 router.post('/', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN', 'SUPER_ADMIN'), Validator.validateAddMachine, MachineController.addMachine);
+router.post('/bulk', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN', 'SUPER_ADMIN'), MachineController.addMachinesBulk);
 router.get('/', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN', 'SUPER_ADMIN', 'ENGINEER'), MachineController.listMachines);
 router.get('/stats', verifyToken, requireRole('OPERATOR', 'MANAGER', 'SUPERADMIN', 'SUPER_ADMIN'), MachineController.getStats);
 router.get('/:id', verifyToken, MachineController.getMachine);

@@ -9,6 +9,13 @@ const addMachine = async (req, res, next) => {
     } catch (err) { next(err); }
 };
 
+const addMachinesBulk = async (req, res, next) => {
+    try {
+        const result = await MachineService.addMachinesBulk(req.user, req.body);
+        res.status(201).json({ success: true, data: result });
+    } catch (err) { next(err); }
+};
+
 const editMachine = async (req, res, next) => {
     try {
         const result = await MachineService.editMachine(req.user, req.params.id, req.body);
@@ -105,6 +112,6 @@ const getStats = async (req, res, next) => {
 };
 
 module.exports = {
-    addMachine, editMachine, decommission, getMachine, listMachines,
+    addMachine, addMachinesBulk, editMachine, decommission, getMachine, listMachines,
     mapTid, unmapTid, transferBranch, getCustodyChain, getTidHistory, getStats
 };

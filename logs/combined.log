@@ -4918,3 +4918,249 @@ Meta: {"method":"GET","url":"/api/branches?search=&limit=10","ip":"::1"}
 Meta: {"method":"GET","url":"/api/branches?search=k&limit=10","ip":"::1"}
 [2026-06-05T17:04:06.963Z] [INFO] Incoming Request
 Meta: {"method":"GET","url":"/api/branches?search=&limit=10","ip":"::1"}
+[2026-06-06T08:52:40.358Z] [INFO] Server listening on port 28471
+[2026-06-06T08:53:03.208Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T08:53:19.052Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/login","ip":"::1"}
+[2026-06-06T08:53:19.920Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:53:19.939Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:53:24.746Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:53:24.812Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:53:37.526Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/bulk","ip":"::1"}
+[2026-06-06T08:53:37.939Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:53:48.401Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW","ip":"::1"}
+[2026-06-06T08:53:51.404Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=2&limit=20&status=NEW","ip":"::1"}
+[2026-06-06T08:53:56.129Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/employees?role=ENGINEER","ip":"::1"}
+[2026-06-06T08:57:43.296Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:57:43.306Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T08:57:43.310Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:57:43.352Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-06T08:57:43.419Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:57:43.422Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:57:47.397Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW","ip":"::1"}
+[2026-06-06T08:57:50.294Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/employees/list?role=ENGINEER","ip":"::1"}
+[2026-06-06T08:57:50.297Z] [INFO] [EmployeeController.list] Listing employees by user ID: aa1abd5e-6021-11f1-bd32-d6b4261e94ad (OPERATOR)
+Meta: {"role":"ENGINEER"}
+[2026-06-06T08:57:55.380Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/352c4c8c-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.390Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3533c386-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.395Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35349afe-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.397Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35383592-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.399Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35356402-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.405Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3539ec20-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.410Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3538c00c-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.422Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353955f8-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.432Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3536cf5e-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.436Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353af6ce-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.444Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353b9296-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.445Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353a769a-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.451Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3537a866-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.452Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353c2fc6-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.453Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353cb978-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.455Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353fa084-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.460Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353d47c6-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.462Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353dfe1e-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.466Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353e7ef2-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.467Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/353ef724-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:57:55.474Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW","ip":"::1"}
+[2026-06-06T08:57:58.432Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:57:58.461Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T08:57:58.463Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:58:01.297Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=ASSIGNED","ip":"::1"}
+[2026-06-06T08:58:12.874Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=ASSIGNED&service_type=DEINSTALLATION","ip":"::1"}
+[2026-06-06T08:58:20.182Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW&service_type=DEINSTALLATION","ip":"::1"}
+[2026-06-06T08:58:22.529Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW&service_type=INSTALLATION","ip":"::1"}
+[2026-06-06T08:58:25.660Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW&service_type=REPAIR","ip":"::1"}
+[2026-06-06T08:58:27.080Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW&service_type=PICKUP","ip":"::1"}
+[2026-06-06T08:58:28.375Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW&service_type=REPLACEMENT","ip":"::1"}
+[2026-06-06T08:58:32.027Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/employees/list?role=ENGINEER","ip":"::1"}
+[2026-06-06T08:58:32.030Z] [INFO] [EmployeeController.list] Listing employees by user ID: aa1abd5e-6021-11f1-bd32-d6b4261e94ad (OPERATOR)
+Meta: {"role":"ENGINEER"}
+[2026-06-06T08:58:33.455Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3540c8ce-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.463Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35418c28-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.467Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3547232c-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.470Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3552fb02-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.472Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35478d1c-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.474Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3553a3d6-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.481Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/354b1a04-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.482Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35597b44-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.483Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35540588-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.485Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3555ec7c-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.491Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3558cdd4-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.492Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/35523230-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.499Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/355a6a7c-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.500Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/355b1076-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.504Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/3559d260-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.505Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/355e5e34-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.506Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.507Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/355b6bb6-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.512Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/355d8298-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.515Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/355e124e-6185-11f1-bd32-d6b4261e94ad/assign","ip":"::1"}
+[2026-06-06T08:58:33.522Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20&status=NEW&service_type=REPLACEMENT","ip":"::1"}
+[2026-06-06T08:59:08.050Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/logout","ip":"::1"}
+[2026-06-06T08:59:08.526Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T08:59:12.318Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T08:59:21.078Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/login","ip":"::1"}
+[2026-06-06T08:59:21.823Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:59:21.845Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T08:59:26.761Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:59:26.791Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-06T08:59:28.701Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-06T08:59:28.755Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-06T08:59:41.443Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad/status/en-route","ip":"::1"}
+[2026-06-06T08:59:41.479Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-06T08:59:43.750Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/352c4c8c-6185-11f1-bd32-d6b4261e94ad/status/en-route","ip":"::1"}
+[2026-06-06T08:59:43.773Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-06T08:59:48.023Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad/status/arrived","ip":"::1"}
+[2026-06-06T08:59:48.195Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-06T08:59:51.253Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/352c4c8c-6185-11f1-bd32-d6b4261e94ad/status/arrived","ip":"::1"}
+[2026-06-06T08:59:51.398Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-06T08:59:53.963Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T08:59:54.000Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:00:03.691Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad/job-sheet","ip":"::1"}
+[2026-06-06T09:00:09.941Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T09:00:09.982Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T09:00:09.987Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets/b5168824-60f7-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:00:14.328Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines?search=&limit=10&status=AVAILABLE","ip":"::1"}
+[2026-06-06T09:00:20.989Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/stock-issuances?page=1&limit=20&assigned_to=ce04a6ac-6022-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:00:20.991Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/stock-issuances?page=1&limit=20&assigned_to=ce04a6ac-6022-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:00:23.659Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T09:00:23.661Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T09:00:23.680Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-06T09:00:23.689Z] [ERROR] Express Error: Invalid or expired refresh token
+Stack: Error: Invalid or expired refresh token
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:10:17)
+    at Object.refreshToken (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:191:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async refreshToken (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Auth.controller.js:227:24)
+[2026-06-06T09:00:23.726Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/stock-issuances?page=1&limit=20&assigned_to=ce04a6ac-6022-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:00:24.125Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T09:00:24.344Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T09:00:24.371Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T09:59:00.576Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T09:59:00.588Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-06T09:59:00.591Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:59:00.593Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad/tid-history","ip":"::1"}
+[2026-06-06T09:59:00.594Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad/custody","ip":"::1"}
+[2026-06-06T09:59:00.603Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-06T09:59:00.775Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-06&to_date=2026-06-06","ip":"::1"}
+[2026-06-06T09:59:00.782Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad","ip":"::1"}
+[2026-06-06T09:59:00.785Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad/custody","ip":"::1"}
+[2026-06-06T09:59:00.788Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad/tid-history","ip":"::1"}
+[2026-06-06T15:23:41.716Z] [INFO] Server listening on port 28471
+[2026-06-06T15:23:45.733Z] [INFO] Server listening on port 28471
+[2026-06-06T15:23:57.457Z] [INFO] Server listening on port 28471

@@ -153,3 +153,9 @@ Stack: Error: Unknown column 'e1.name' in 'field list'
     at module.exports [as verify] (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/jsonwebtoken/verify.js:101:10)
     at verifyToken (/Users/darksoul/Desktop/POSMerchant/backend/middlewares/auth.middleware.js:26:9)
     at Layer.handleRequest (/Users/darksoul/Desktop/POSMerchant/backend/node_modules/router/lib/layer.js:152:17)
+[2026-06-06T09:00:23.689Z] [ERROR] Express Error: Invalid or expired refresh token
+Stack: Error: Invalid or expired refresh token
+    at createError (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:10:17)
+    at Object.refreshToken (/Users/darksoul/Desktop/POSMerchant/backend/services/Auth.service.js:191:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async refreshToken (/Users/darksoul/Desktop/POSMerchant/backend/controllers/Auth.controller.js:227:24)
