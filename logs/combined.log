@@ -5164,3 +5164,364 @@ Meta: {"method":"GET","url":"/api/machines/110f7c76-60f8-11f1-bd32-d6b4261e94ad/
 [2026-06-06T15:23:41.716Z] [INFO] Server listening on port 28471
 [2026-06-06T15:23:45.733Z] [INFO] Server listening on port 28471
 [2026-06-06T15:23:57.457Z] [INFO] Server listening on port 28471
+[2026-06-11T08:01:58.899Z] [INFO] Server listening on port 28471
+[2026-06-11T08:02:15.203Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-11T08:02:38.710Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/login","ip":"::1"}
+[2026-06-11T08:02:39.583Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T08:02:39.609Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T08:02:42.157Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::1"}
+[2026-06-11T08:02:42.186Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::1"}
+[2026-06-11T08:02:42.658Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::1"}
+[2026-06-11T08:02:47.489Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:02:47.522Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:02:49.774Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T08:02:49.780Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:02:49.789Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-11T08:04:39.583Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:04:39.689Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T08:04:39.798Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:06:37.467Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T08:06:37.480Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T08:06:37.484Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T08:06:37.614Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T08:06:37.631Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T08:06:49.142Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:06:49.182Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:19:23.577Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T08:19:23.586Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:19:23.588Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-11T08:19:23.595Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T08:19:23.691Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T08:19:23.698Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=1000","ip":"::1"}
+[2026-06-11T08:49:45.797Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T08:49:45.809Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T08:49:45.815Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T08:49:45.953Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T08:49:45.969Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T08:50:01.758Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets/5e3bd9a1-6272-44ef-8617-908934e4632a","ip":"::1"}
+[2026-06-11T08:50:01.805Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets/5e3bd9a1-6272-44ef-8617-908934e4632a","ip":"::1"}
+[2026-06-11T08:50:07.765Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-11T08:50:07.813Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-11T08:50:14.679Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T08:50:14.689Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:12:35.871Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:12:36.016Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-11T09:12:36.110Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T09:12:36.115Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:12:36.370Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:12:36.423Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:12:38.911Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-11T09:12:43.840Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/login","ip":"::1"}
+[2026-06-11T09:12:44.745Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:12:58.573Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:13:03.248Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants/search?mobile=9876543211","ip":"::1"}
+[2026-06-11T09:13:08.904Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:13:08.906Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:13:38.444Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:13:38.450Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/auth/validate-me","ip":"::1"}
+[2026-06-11T09:13:38.485Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T09:13:38.499Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:13:38.616Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:13:38.621Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?page=1&limit=20","ip":"::1"}
+[2026-06-11T09:13:40.677Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::1"}
+[2026-06-11T09:13:40.700Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::1"}
+[2026-06-11T09:13:41.137Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10","ip":"::1"}
+[2026-06-11T09:13:42.731Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/merchants?page=1&limit=10&search=9876543210","ip":"::1"}
+[2026-06-11T09:14:09.687Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-11T09:14:09.717Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T09:14:09.764Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-11T09:14:09.765Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=50","ip":"::1"}
+[2026-06-11T09:15:04.284Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:05.522Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:05.527Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:05.529Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:05.533Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:05.832Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:05.835Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:05.836Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:05.837Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.026Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.028Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.029Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.030Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.207Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.209Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.210Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.211Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.410Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.413Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.415Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.417Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.927Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.929Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:06.930Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:06.932Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:07.201Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:07.203Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:07.204Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:07.210Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:07.636Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:07.645Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:07.647Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:07.649Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:07.968Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:07.971Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:07.972Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:07.973Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:08.253Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:08.255Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:08.256Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:08.257Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:08.505Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:08.507Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:08.508Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:08.509Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:08.750Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:08.752Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:08.754Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:08.755Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.262Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.265Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.266Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.268Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.281Z] [INFO] Incoming Request
+Meta: {"method":"POST","url":"/api/auth/refresh-token","ip":"::1"}
+[2026-06-11T09:15:09.312Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.315Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.317Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.319Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.466Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.471Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.473Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.474Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.801Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.803Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.805Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.806Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.967Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.970Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:09.971Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:09.972Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.160Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.162Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.163Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.165Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.310Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.312Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.313Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.315Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.563Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.565Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.566Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.567Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.908Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.911Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:10.912Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:10.915Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.071Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.073Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.075Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.076Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.315Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.318Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.321Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.324Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.487Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.490Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.491Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.492Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.723Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.724Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.725Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.726Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.881Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.883Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:11.884Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:11.886Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:12.289Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:12.307Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:12.310Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:12.314Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:14.156Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:14.170Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
+[2026-06-11T09:15:14.180Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/attendance/me?from_date=2026-06-11&to_date=2026-06-11","ip":"::1"}
+[2026-06-11T09:15:14.182Z] [INFO] Incoming Request
+Meta: {"method":"GET","url":"/api/tickets?limit=200","ip":"::1"}
