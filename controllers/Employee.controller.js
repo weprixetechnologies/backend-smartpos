@@ -87,9 +87,23 @@ async function remove(req, res, next) {
     }
 }
 
+async function getMe(req, res, next) {
+    logger.info(`[EmployeeController.getMe] Fetching profile for user ID: ${req.user?.id}`);
+    try {
+        const employee = await EmployeeService.getEmployee(req.user, req.user.id);
+        return res.json({
+            success: true,
+            data: employee
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports = {
     register,
     getOne,
+    getMe,
     list,
     edit,
     remove
