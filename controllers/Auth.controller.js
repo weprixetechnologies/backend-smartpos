@@ -11,7 +11,7 @@ const RefreshTokenModel = require('../models/RefreshToken.model');
 // In development (HTTP localhost) we use plain names.
 const IS_PROD = process.env.NODE_ENV === 'production';
 
-const ACCESS_COOKIE  = IS_PROD ? '__Host-accessToken'  : 'accessToken';
+const ACCESS_COOKIE = IS_PROD ? '__Host-accessToken' : 'accessToken';
 const REFRESH_COOKIE = IS_PROD ? '__Host-refreshToken' : 'refreshToken';
 
 // ─── Cookie option builders ───────────────────────────────────────────────────
@@ -49,12 +49,12 @@ function clearCookieOpts() {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function setAuthCookies(res, accessToken, refreshToken) {
-    res.cookie(ACCESS_COOKIE,  accessToken,  accessCookieOpts());
+    res.cookie(ACCESS_COOKIE, accessToken, accessCookieOpts());
     res.cookie(REFRESH_COOKIE, refreshToken, refreshCookieOpts());
 }
 
 function clearAuthCookies(res) {
-    res.clearCookie(ACCESS_COOKIE,  clearCookieOpts());
+    res.clearCookie(ACCESS_COOKIE, clearCookieOpts());
     res.clearCookie(REFRESH_COOKIE, clearCookieOpts());
 }
 
@@ -63,8 +63,8 @@ function clearAuthCookies(res) {
 async function login(req, res, next) {
     try {
         const { identifier, password } = req.body;
-        const deviceInfo  = req.headers['user-agent'] || 'unknown';
-        const ipAddress   = req.ip || req.headers['x-forwarded-for'] || 'unknown';
+        const deviceInfo = req.headers['user-agent'] || 'unknown';
+        const ipAddress = req.ip || req.headers['x-forwarded-for'] || 'unknown';
 
         const result = await AuthService.login(identifier, password, deviceInfo, ipAddress);
 
@@ -79,6 +79,27 @@ async function login(req, res, next) {
         next(err);
     }
 }
+
+async function loginApp(req, res, next) {
+    try {
+        const { identifier, password } = req.body;
+        const deviceInfo = req.headers['user-agent'] || 'unknown';
+        const ipAddress = req.ip || req.headers['x-forwarded-for'] || 'unknown';
+
+        const result = await AuthService.login(identifier, password, deviceInfo, ipAddress);
+
+        return res.json({
+            success: true,
+            data: {
+                user: result.user,
+                accessToken: result.accessToken,
+                refreshToken: result.refreshToken
+            }
+        });
+    } catch (err) {
+        next(err);
+    }
+} 
 
 // ─── GET /auth/validate-me ────────────────────────────────────────────────────
 // Stateless — JWT decode only, zero DB queries.
@@ -99,14 +120,14 @@ async function validateMe(req, res) {
             success: true,
             data: {
                 user: {
-                    id:            decoded.id,
-                    full_name:     decoded.name,
-                    email:         decoded.email || null,
+                    id: decoded.id,
+                    full_name: decoded.name,
+                    email: decoded.email || null,
                     employee_code: decoded.employee_code || null,
-                    role:          decoded.role,
-                    branch_id:     decoded.branch_id,
-                    branch_name:   decoded.branch_name || null,
-                    login_time:    decoded.login_time || null,
+                    role: decoded.role,
+                    branch_id: decoded.branch_id,
+                    branch_name: decoded.branch_name || null,
+                    login_time: decoded.login_time || null,
                     isAuthenticated: true
                 }
             }
@@ -123,7 +144,7 @@ async function validateMe(req, res) {
 
             const crypto = require('crypto');
             const tokenHash = crypto.createHash('sha256').update(rawRefreshToken).digest('hex');
-            
+
             let tokenRow = null;
             const expiredAccessToken = req.cookies?.[ACCESS_COOKIE];
             if (expiredAccessToken) {
@@ -152,7 +173,7 @@ async function validateMe(req, res) {
             }
 
             const deviceInfo = req.headers['user-agent'] || 'unknown';
-            const ipAddress  = req.ip || req.headers['x-forwarded-for'] || 'unknown';
+            const ipAddress = req.ip || req.headers['x-forwarded-for'] || 'unknown';
 
             const result = await AuthService.refreshToken(
                 rawRefreshToken,
@@ -182,7 +203,7 @@ async function validateMe(req, res) {
 // Falls back to hash-only lookup if the access token is missing/unreadable.
 async function refreshToken(req, res, next) {
     try {
-        const rawRefreshToken = req.cookies?.[REFRESH_COOKIE];
+        const rawRefreshToken = req.cookies?.[REFRESH_COOKIE] || req.body.refreshToken;
         if (!rawRefreshToken) {
             return res.status(401).json({ success: false, message: 'No refresh token provided' });
         }
@@ -222,7 +243,7 @@ async function refreshToken(req, res, next) {
 
         // Rotate — revoke old token, issue new pair via service
         const deviceInfo = req.headers['user-agent'] || 'unknown';
-        const ipAddress  = req.ip || req.headers['x-forwarded-for'] || 'unknown';
+        const ipAddress = req.ip || req.headers['x-forwarded-for'] || 'unknown';
 
         const result = await AuthService.refreshToken(
             rawRefreshToken,
@@ -235,6 +256,57 @@ async function refreshToken(req, res, next) {
         setAuthCookies(res, result.accessToken, result.refreshToken);
 
         return res.json({ success: true, message: 'Token refreshed' });
+    } catch (err) {
+        next(err);
+    }
+}
+
+// ─── POST /auth/refresh-token-app ─────────────────────────────────────────────
+// Mobile variant — reads refreshToken from request body, returns new tokens
+// in the JSON response instead of setting cookies.
+async function refreshTokenApp(req, res, next) {
+    try {
+        const rawRefreshToken = req.body.refreshToken;
+        if (!rawRefreshToken) {
+            return res.status(401).json({ success: false, message: 'No refresh token provided' });
+        }
+
+        // Hash the incoming raw refresh token for DB lookup
+        const tokenHash = crypto.createHash('sha256').update(rawRefreshToken).digest('hex');
+
+        // Find the token row by hash
+        const tokenRow = await RefreshTokenModel.findValidTokenByHash(tokenHash);
+
+        if (!tokenRow) {
+            return res.status(401).json({ success: false, message: 'Refresh token expired or revoked' });
+        }
+
+        // Validate employee still exists and is active
+        const employee = await EmployeeModel.findById(tokenRow.employee_id);
+        if (!employee || employee.status === 'INACTIVE') {
+            await RefreshTokenModel.revokeAllForEmployee(tokenRow.employee_id);
+            return res.status(403).json({ success: false, message: 'Account is inactive' });
+        }
+
+        // Rotate — revoke old token, issue new pair via service
+        const deviceInfo = req.headers['user-agent'] || 'unknown';
+        const ipAddress  = req.ip || req.headers['x-forwarded-for'] || 'unknown';
+
+        const result = await AuthService.refreshToken(
+            rawRefreshToken,
+            tokenRow.employee_id,
+            deviceInfo,
+            ipAddress
+        );
+
+        return res.json({
+            success: true,
+            message: 'Token refreshed',
+            data: {
+                token: result.accessToken,
+                refreshToken: result.refreshToken,
+            }
+        });
     } catch (err) {
         next(err);
     }
@@ -275,8 +347,10 @@ async function logoutAll(req, res, next) {
 
 module.exports = {
     login,
+    loginApp,
     validateMe,
     refreshToken,
+    refreshTokenApp,
     logout,
     logoutAll,
     // Export cookie name so middleware can read the right cookie

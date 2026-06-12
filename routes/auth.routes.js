@@ -6,8 +6,10 @@ const verifyToken = require('../middlewares/auth.middleware');
 
 // Public routes
 router.post('/login',          validateLogin,  AuthController.login);
+router.post('/login-app',      validateLogin,  AuthController.loginApp);
 router.get('/validate-me',                     AuthController.validateMe);
 router.post('/refresh-token',                  AuthController.refreshToken);  // called by axios interceptor
+router.post('/refresh-token-app',              AuthController.refreshTokenApp);  // called by mobile Dio interceptor
 
 // Protected routes (require valid access token)
 router.post('/logout',                         AuthController.logout); // Must be able to clear expired/invalid cookies
