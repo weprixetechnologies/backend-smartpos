@@ -303,7 +303,7 @@ async function refreshTokenApp(req, res, next) {
             success: true,
             message: 'Token refreshed',
             data: {
-                token: result.accessToken,
+                accessToken: result.accessToken,
                 refreshToken: result.refreshToken,
             }
         });
